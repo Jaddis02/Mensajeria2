@@ -10,6 +10,14 @@ class UsuariosController extends Controller
     // Página de bienvenida, para escribir el login
     public function acceso() {
 
+        $session = Session();
+
+        if($session->get('usuario')!= null){
+            return  view('templates/header').
+                    view('listadoMensajes').
+                    view('templates/footer');
+        }
+
         return  view('templates/header').
                 view('acceso').
                 view('templates/footer');
@@ -28,6 +36,8 @@ class UsuariosController extends Controller
         return  view('templates/header').
                 view('listadoMensajes').
                 view('templates/footer');
+
+
 
     }
 }
